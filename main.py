@@ -234,12 +234,6 @@ async def check_holders():
             logging.error(f"Failed to Check {owner} on NFTs\n"
                           f"{e}")
         await asyncio.sleep(1)
-        
-async def on_shutdown(dispatcher):
-    """
-    bugfix 
-    """
-    pass
 
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
@@ -251,7 +245,6 @@ if __name__ == '__main__':
             webhook_path=WEBHOOK_PATH,
             skip_updates=True,
             on_startup=on_startup,
-            on_shutdown=on_shutdown,
             host=WEBAPP_HOST,
             port=WEBAPP_PORT,
             )
