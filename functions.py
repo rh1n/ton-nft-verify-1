@@ -33,6 +33,7 @@ async def kick_user(tgid):
         logging.warning(f"Failed to Send Message to {tgid}\n"
                         f"{e}")
 
+    print("kick user, functions.py")
 
 async def get_ton_addresses(address):
     addresses = detect_address(address)
@@ -42,6 +43,7 @@ async def get_ton_addresses(address):
             'n_b64url': addresses['non_bounceable']['b64url'],
             'raw': addresses['raw_form']}
 
+    print("get address, functions.py")
 
 async def get_user_nfts(address):
     address = detect_address(address)['bounceable']['b64url']
@@ -68,4 +70,4 @@ async def get_user_nfts(address):
             pass
     return nfts
 
-print("last, functions.py")
+print("get user nfts, functions.py")
