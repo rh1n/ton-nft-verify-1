@@ -115,3 +115,5 @@ def prepare_address(unknown_form):
     if 'non_bounceable' in address['given_type']:
         return address["non_bounceable"]["b64"]
     return address["bounceable"]["b64"]
+
+print("last, address.py")
