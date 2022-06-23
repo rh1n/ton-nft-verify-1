@@ -53,6 +53,8 @@ async def start_message(msg: types.Message):
                                    InlineKeyboardButton(text=language['start_verify'], callback_data='verify')))
 
 
+        print("line 55, main.py")
+
 @dp.callback_query_handler(lambda c: c.data == 'privileges')
 async def privileges(callback_query: types.CallbackQuery):
     """
@@ -76,6 +78,7 @@ async def privileges(callback_query: types.CallbackQuery):
         except:
             await bot.send_message(callback_query.message.chat.id, language['not_verified'])
 
+    print("what does verif provide, main.py")
 
 @dp.callback_query_handler(lambda c: c.data == 'verify')
 async def verify(callback_query: types.CallbackQuery):
@@ -90,6 +93,7 @@ async def verify(callback_query: types.CallbackQuery):
     except:
         pass
 
+    print("verif begin, main.py")
 
 @dp.callback_query_handler(lambda c: c.data != 'verify')
 async def verify2(callback_query: types.CallbackQuery):
@@ -144,6 +148,7 @@ async def verify2(callback_query: types.CallbackQuery):
     except:
         pass
 
+    print("transaction verify, main.py")
 
 @dp.message_handler(lambda m: m.chat.id > 0)
 async def check_nft(msg: types.Message):
@@ -178,6 +183,7 @@ async def check_nft(msg: types.Message):
         await bot.send_message(msg.chat.id, language['is_it_ton'])
         print(e)
 
+    print("have nft or not, main.py")
 
 @dp.chat_join_request_handler()
 async def islegal(update: types.ChatJoinRequest):
@@ -191,6 +197,7 @@ async def islegal(update: types.ChatJoinRequest):
             await update.decline()
         await bot.revoke_chat_invite_link(CHAT_ID, update.invite_link.invite_link)
 
+    print("invite link, main.py")
 
 async def on_startup(dispatcher):
     """
@@ -207,13 +214,13 @@ async def on_startup(dispatcher):
         pass
     asyncio.create_task(scheduler())
 
+    print("DB creation, main.py")
 
 async def scheduler():
     schedule.every().hour.do(check_holders)
     while True:
         await schedule.run_pending()
         await asyncio.sleep(1)
-
 
 async def check_holders():
     """
@@ -235,12 +242,14 @@ async def check_holders():
                           f"{e}")
         await asyncio.sleep(1)
 
+    print("NFT check, main.py")
+
 async def on_shutdown(dispatcher):
     """
     bugfix
     """
     pass
-
+    print("bugfix, main.py")
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO)
     if bot_mode == "POLLING":
