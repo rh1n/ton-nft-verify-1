@@ -44,3 +44,5 @@ english['my_nft'] = f'have passed <a href="tg://user?id={BOT_ID}">verification</
 
 russian = json.loads(open('ru.json', 'rb').read())
 russian['my_nft'] = f'прошёл <a href="tg://user?id={BOT_ID}">верификацию</a>. Это мой NFT:'
+
+print("last, config.py")
